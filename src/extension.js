@@ -44,6 +44,8 @@ function activate(context) {
 
 async function fetchInstructionInfo(instruction) {
     try {
+        // https://gpuopen.com/download/machine-readable-isa/latest/
+        // https://github.com/GPUOpen-Tools/isa_spec_manager/blob/main/documentation/spec_documentation.md
         const url = `https://www.felixcloutier.com/x86/${instruction}`;
         const response = await axios.get(url);
         const $ = cheerio.load(response.data);
