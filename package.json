@@ -1,29 +1,27 @@
 {
-  "name": "x86-assembly-syntax",
-  "displayName": "Universal Assembly Syntax Highlighting",
-  "description": "Syntax highlighting extension for x86, x64 and ARM assembly both for Intel and AT&T syntax",
-  "version": "1.1.0",
+  "name": "amdgpu-isa-syntax",
+  "displayName": "AMDGPU ISA Assembly Syntax Highlighting",
+  "description": "Syntax highlighting extension for GCN and RDNA assembly",
+  "version": "1.0.0",
   "engines": {
-    "vscode": "^1.60.0"
+    "vscode": "^1.75.0"
   },
   "categories": [
     "Programming Languages"
   ],
   "main": "./src/extension.js",
-  "activationEvents": [
-    "onLanguage:x86asm"
-  ],
   "contributes": {
     "languages": [
       {
-        "id": "x86asm",
+        "id": "amdgpu",
         "aliases": [
-          "x86-x64 Assembly",
-          "x86/x64 Assembly",
-          "x86/x64",
-          "x86-x64",
-          "arm",
-          "x86asm"
+          "GCN Assembly",
+          "RDNA Assembly",
+          "AMDGPU",
+          "gfx9",
+          "gfx10",
+          "gfx11",
+          "gfx12"
         ],
         "extensions": [
           ".asm",
@@ -38,36 +36,37 @@
     ],
     "grammars": [
       {
-        "language": "x86asm",
-        "scopeName": "source.x86asm",
+        "language": "amdgpu",
+        "scopeName": "source.amdgpu",
         "path": "./syntaxes/asm.tmLanguage.json"
       }
     ]
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/haxo-games/x86-x64-syntax-highlighting.git"
+    "url": "https://github.com/fwahlster-amd/AMDGPU-ISA.git"
   },
-  "publisher": "HaxoGames",
+  "publisher": "Fabian Wahlster",
   "icon": "images/icon.png",
   "bugs": {
-    "url": "https://github.com/haxo-games/x86-x64-syntax-highlighting/issues"
+    "url": "https://github.com/fwahlster-amd/AMDGPU-ISA/issues"
   },
   "keywords": [
-    "x86-x64 Assembly",
-    "x86/x64 Assembly",
-    "x86/x64",
-    "x86-x64",
-    "x86asm",
+    "GCN Assembly",
+    "RDNA Assembly",
+    "AMD Assembly",
     "asm",
     "assembly",
-    "x86",
-    "x64",
-    "intel",
+    "gfx9",
+    "gfx10",
+    "gfx11",
+    "gfx12",
+    "kernel",
+    "shader",
     "syntax",
     "highlighting"
   ],
-  "homepage": "https://github.com/haxo-games/x86-x64-syntax-highlighting#readme",
+  "homepage": "https://github.com/fwahlster-amd/AMDGPU-ISA#readme",
   "dependencies": {
     "axios": "^1.7.7",
     "cheerio": "^1.0.0"
