@@ -1,10 +1,10 @@
 ## Overview 🛠️
 
-This Visual Studio Code extension provides comprehensive syntax highlighting for x86, x64 and ARM assembly language using Intel syntax. It's designed to improve readability and understanding of assembly code, including compiler-generated output.
+This Visual Studio Code extension provides comprehensive syntax highlighting for AMDGPU  assembly language for GCN/RDNA. It's designed to improve readability and understanding of assembly code, including compiler-generated output.
 
 ## Features ✨
 
-- Syntax highlighting for x86, x64 and ARM assembly instructions 💻
+- Syntax highlighting for AMDGPU assembly instructions 💻
 - Support for Intel syntax 🧠
 - Highlighting of registers, memory operands, and numeric constants 🔍
 - Recognition of common assembler directives ⚙️
@@ -57,13 +57,13 @@ For example:
 "editor.tokenColorCustomizations": {
     "textMateRules": [
         {
-            "scope": "keyword.control.instruction.x86asm",
+            "scope": "keyword.control.instruction.amdgpu",
             "settings": {
                 "foreground": "#C678DD"
             }
         },
         {
-            "scope": "variable.language.register.x86asm",
+            "scope": "variable.language.register.amdgpu",
             "settings": {
                 "foreground": "#E06C75"
             }

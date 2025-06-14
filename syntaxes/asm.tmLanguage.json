@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-  "name": "x86/x64/ARM Assembly",
+  "name": "AMDGPU Assembly",
   "patterns": [
     { "include": "#comments" },
     { "include": "#strings" },
@@ -20,11 +20,15 @@
     "comments": {
       "patterns": [
         {
-          "name": "comment.line.semicolon.x86asm",
+          "name": "comment.line.double-slash.amdgpu",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.line.semicolon.amdgpu",
           "match": ";.*$"
         },
         {
-          "name": "comment.block.x86asm",
+          "name": "comment.block.amdgpu",
           "begin": "/\\*",
           "end": "\\*/"
         }
@@ -33,91 +37,91 @@
     "directives": {
       "patterns": [
         {
-          "name": "keyword.control.directive.define.x86asm",
+          "name": "keyword.control.directive.define.amdgpu",
           "match": "%define\\b"
         },
         {
-          "name": "keyword.control.directive.assign.x86asm",
+          "name": "keyword.control.directive.assign.amdgpu",
           "match": "%assign\\b"
         },
         {
-          "name": "keyword.control.directive.equ.x86asm",
+          "name": "keyword.control.directive.equ.amdgpu",
           "match": "\\bequ\\b"
         },
         {
-          "name": "keyword.control.directive.x86asm",
+          "name": "keyword.control.directive.amdgpu",
           "match": "\\.(file|cfi_[a-zA-Z_]+|gcc_except_table|ctors|ascii|lcomm|byte|ident|align|rdata|rodata|comment|tbss|init|fini|note|debug|intel_syntax)\\b"
         },
         {
-          "name": "keyword.control.directive.offset.x86asm",
+          "name": "keyword.control.directive.offset.amdgpu",
           "match": "\\bOFFSET\\b"
         },
         {
-          "name": "keyword.control.directive.uleb128.x86asm",
+          "name": "keyword.control.directive.uleb128.amdgpu",
           "match": "\\.uleb128\\b"
         },
         {
-          "name": "keyword.control.directive.def.x86asm",
+          "name": "keyword.control.directive.def.amdgpu",
           "match": "\\.def\\b"
         },
         {
-          "name": "keyword.control.directive.long.x86asm",
+          "name": "keyword.control.directive.long.amdgpu",
           "match": "\\.long\\b"
         },
         {
-          "name": "keyword.control.directive.scl.x86asm",
+          "name": "keyword.control.directive.scl.amdgpu",
           "match": "\\.scl\\b"
         },
         {
-          "name": "keyword.control.directive.type.x86asm",
+          "name": "keyword.control.directive.type.amdgpu",
           "match": "\\.type\\b"
         },
         {
-          "name": "keyword.control.directive.endef.x86asm",
+          "name": "keyword.control.directive.endef.amdgpu",
           "match": "\\.endef\\b"
         },
         {
-          "name": "keyword.control.directive.globl.x86asm",
+          "name": "keyword.control.directive.globl.amdgpu",
           "match": "\\.globl\\b"
         },
         {
-          "name": "keyword.control.directive.space.x86asm",
+          "name": "keyword.control.directive.space.amdgpu",
           "match": "\\.space\\b"
         },
         {
-          "name": "keyword.control.directive.intel_syntax.x86asm",
+          "name": "keyword.control.directive.intel_syntax.amdgpu",
           "match": "\\.intel_syntax\\b"
         },
         {
-          "name": "keyword.control.directive.extern.x86asm",
+          "name": "keyword.control.directive.extern.amdgpu",
           "match": "\\bextern\\b"
         },
         {
-          "name": "keyword.control.directive.global.x86asm",
+          "name": "keyword.control.directive.global.amdgpu",
           "match": "\\bglobal\\b"
         },
         {
-          "name": "keyword.control.directive.weak.x86asm",
+          "name": "keyword.control.directive.weak.amdgpu",
           "match": "\\.weak\\b"
         },
         {
-          "name": "keyword.control.directive.hidden.x86asm",
+          "name": "keyword.control.directive.hidden.amdgpu",
           "match": "\\.hidden\\b"
         },
         {
-          "name": "keyword.control.directive.protected.x86asm",
+          "name": "keyword.control.directive.protected.amdgpu",
           "match": "\\.protected\\b"
         },
         {
-          "name": "keyword.control.directive.internal.x86asm",
+          "name": "keyword.control.directive.internal.amdgpu",
           "match": "\\.internal\\b"
         },
         {
-          "name": "keyword.control.directive.default.x86asm",
+          "name": "keyword.control.directive.default.amdgpu",
           "match": "\\bdefault\\b"
         },
         {
-          "name": "keyword.control.directive.rel.x86asm",
+          "name": "keyword.control.directive.rel.amdgpu",
           "match": "\\brel\\b"
         }
       ]
@@ -125,15 +129,15 @@
     "labels": {
       "patterns": [
         {
-          "name": "entity.name.function.label.x86asm",
+          "name": "entity.name.function.label.amdgpu",
           "match": "^[a-zA-Z_][a-zA-Z0-9_]*:"
         },
         {
-          "name": "entity.name.tag.label.x86asm",
+          "name": "entity.name.tag.label.amdgpu",
           "match": "^L[a-zA-Z0-9_]+:"
         },
         {
-          "name": "entity.name.label.special.x86asm",
+          "name": "entity.name.label.special.amdgpu",
           "match": "^[._][a-zA-Z_][a-zA-Z0-9_]*:"
         }
       ]
@@ -141,7 +145,7 @@
     "sections": {
       "patterns": [
         {
-          "name": "entity.name.section.x86asm",
+          "name": "entity.name.section.amdgpu",
           "match": "\\.(section .(text|data|bss|tbss|tcomm))\\b"
         }
       ]
@@ -149,15 +153,27 @@
     "instructions": {
       "patterns": [
         {
-          "name": "keyword.control.instruction.x86asm",
-          "match": "\\b(mov|push|pop|call|ret|leave|jmp|je|jne|jz|jnz|add|sub|mul|div|and|or|xor|lea|cmp|test|inc|dec|shl|shr|nop|enter|int|syscall|sysret|hlt|in|out|rdmsr|wrmsr)\\b"
+          "name": "keyword.control.instruction.amdgpu",
+          "match": "\\b(s_and_b32|s_load_dword)\\b"
         }
       ]
     },
     "registers": {
       "patterns": [
         {
-          "name": "variable.language.register.x86asm",
+          "name": "variable.language.register.amdgpu",
+          "match": "\\b(s[0-9]+)\\b"
+        },
+        {
+          "name": "variable.language.register.amdgpu",
+          "match": "\\b(v[0-9]+)\\b"
+        },
+        {
+          "name": "variable.language.register.amdgpu",
+          "match": "\\b(m[0-9]+)\\b"
+        },
+        {
+          "name": "variable.language.register.amdgpu",
           "match": "\\b(rax|rbx|rcx|rdx|rsi|rdi|rbp|rsp|r8|r9|r10|r11|r12|r13|r14|r15|eax|ebx|ecx|edx|esi|edi|ebp|esp|ax|bx|cx|dx|si|di|bp|sp|al|bl|cl|dl|cr[0-4]|dr[0-7]|tr[3-6]|cs|ds|ss|es|fs|gs)\\b"
         }
       ]
@@ -165,22 +181,22 @@
     "constants": {
       "patterns": [
         {
-          "name": "constant.numeric.hex.x86asm",
+          "name": "constant.numeric.hex.amdgpu",
           "match": "\\b(0x[0-9A-Fa-f]+)\\b"
         },
         {
-          "name": "constant.numeric.decimal.x86asm",
+          "name": "constant.numeric.decimal.amdgpu",
           "match": "\\b([0-9]+)\\b"
         }
       ]
     },
     "strings": {
-      "name": "string.quoted.double.x86asm",
+      "name": "string.quoted.double.amdgpu",
       "begin": "\"",
       "end": "\"",
       "patterns": [
         {
-          "name": "constant.character.escape.x86asm",
+          "name": "constant.character.escape.amdgpu",
           "match": "\\\\."
         }
       ]
@@ -188,18 +204,18 @@
     "memory_operands": {
       "patterns": [
         {
-          "name": "storage.type.memory.x86asm",
+          "name": "storage.type.memory.amdgpu",
           "match": "\\b(BYTE|WORD|DWORD|QWORD|XMMWORD|YMMWORD|ZMMWORD)\\s+PTR\\b"
         },
         {
-          "name": "storage.type.memory.x86asm",
+          "name": "storage.type.memory.amdgpu",
           "match": "\\b(TBYTE|TWORD|DQWORD|OWORD|FWORD)\\b"
         },
         {
-          "name": "storage.type.memory.bracketed.x86asm",
+          "name": "storage.type.memory.bracketed.amdgpu",
           "match": "\\[(.*?)\\]",
           "captures": {
-            "1": { "name": "entity.name.memory_operand.inside_brackets.x86asm" }
+            "1": { "name": "entity.name.memory_operand.inside_brackets.amdgpu" }
           }
         }
       ]
@@ -207,11 +223,11 @@
     "symbols": {
       "patterns": [
         {
-          "name": "entity.name.function.x86asm",
+          "name": "entity.name.function.amdgpu",
           "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*|__[a-zA-Z0-9_]+)\\b"
         },
         {
-          "name": "entity.name.label.x86asm",
+          "name": "entity.name.label.amdgpu",
           "match": "\\b(L[a-zA-Z0-9_]+|FLAT:[a-zA-Z_][a-zA-Z0-9_]*)\\b"
         }
       ]
@@ -219,15 +235,15 @@
     "structure": {
       "patterns": [
         {
-          "name": "entity.name.structure.x86asm",
+          "name": "entity.name.structure.amdgpu",
           "match": "\\bSTRUC\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\b"
         },
         {
-          "name": "variable.parameter.structure_member.x86asm",
+          "name": "variable.parameter.structure_member.amdgpu",
           "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s+OFFSET\\s*\\b"
         },
         {
-          "name": "constant.numeric.size.x86asm",
+          "name": "constant.numeric.size.amdgpu",
           "match": "\\b([0-9]+)\\s*:\\s*([0-9]+)\\b"
         }
       ]
@@ -235,24 +251,24 @@
     "directive_definitions": {
       "patterns": [
         {
-          "name": "keyword.control.directive.def.x86asm",
+          "name": "keyword.control.directive.def.amdgpu",
           "begin": "\\.def\\s+",
           "end": ";",
           "patterns": [
             {
-              "name": "entity.name.function.x86asm",
+              "name": "entity.name.function.amdgpu",
               "match": "([a-zA-Z_][a-zA-Z0-9_]*)"
             },
             {
-              "name": "keyword.control.directive.scl.x86asm",
+              "name": "keyword.control.directive.scl.amdgpu",
               "match": "\\.scl\\s+([0-9]+)"
             },
             {
-              "name": "keyword.control.directive.type.x86asm",
+              "name": "keyword.control.directive.type.amdgpu",
               "match": "\\.type\\s+([0-9]+)"
             },
             {
-              "name": "keyword.control.directive.endef.x86asm",
+              "name": "keyword.control.directive.endef.amdgpu",
               "match": "\\.endef"
             }
           ]
@@ -262,15 +278,15 @@
     "macros": {
       "patterns": [
         {
-          "name": "keyword.control.macro.x86asm",
+          "name": "keyword.control.macro.amdgpu",
           "match": "\\b(macro|endm)\\b"
         },
         {
-          "name": "entity.name.macro.x86asm",
+          "name": "entity.name.macro.amdgpu",
           "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s+macro\\b"
         }
       ]
     }
   },
-  "scopeName": "source.x86asm"
+  "scopeName": "source.amdgpu"
 }

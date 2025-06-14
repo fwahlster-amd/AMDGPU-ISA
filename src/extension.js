@@ -1,11 +1,9 @@
 const vscode = require('vscode');
-const axios = require('axios');
-const cheerio = require('cheerio');
 const list = require('./mnemonics.js');
 
 function activate(context) {
     // Hover provider for mnemonics
-    const hoverProvider = vscode.languages.registerHoverProvider('x86asm', {
+    const hoverProvider = vscode.languages.registerHoverProvider('amdgpu', {
         async provideHover(document, position, token) {
             const range = document.getWordRangeAtPosition(position, /\b[a-zA-Z0-9_]+\b/);
             const word = document.getText(range);
@@ -27,7 +25,7 @@ function activate(context) {
     });
 
     // Definition provider (Ctrl+Click to jump)
-    const definitionProvider = vscode.languages.registerDefinitionProvider('x86asm', {
+    const definitionProvider = vscode.languages.registerDefinitionProvider('amdgpu', {
         async provideDefinition(document, position, token) {
             const range = document.getWordRangeAtPosition(position);
             if (!range) {
@@ -46,30 +44,22 @@ async function fetchInstructionInfo(instruction) {
     try {
         // https://gpuopen.com/download/machine-readable-isa/latest/
         // https://github.com/GPUOpen-Tools/isa_spec_manager/blob/main/documentation/spec_documentation.md
-        const url = `https://www.felixcloutier.com/x86/${instruction}`;
-        const response = await axios.get(url);
-        const $ = cheerio.load(response.data);
 
         // Extract the title (instruction name)
-        const instructionTitle = $('h1').text();
+        const instructionTitle = "instructionTitle";
 
         // Extract Opcode table and relevant details
-        const opcodeTable = $('table').first();
-        const opcode = opcodeTable.find('tr').eq(1).find('td').eq(0).text();
-        const instructionDescription = opcodeTable.find('tr').eq(1).find('td').eq(5).text();
-
-        // Extract the operation section
-        const operationSection = $('#operation').next('pre').text();
+        const opcode = "opcode";
+        const instructionDescription = "description";
 
         // Extract the description section
-        const descriptionSection = $('#description').nextUntil('h2', 'p').text();
+        const descriptionSection = "description";
 
         // Combine the extracted information into a formatted output
         let hoverContent = `**${instructionTitle}**\n\n`;
         hoverContent += `**Opcode:** ${opcode}\n`;
         hoverContent += `**Description:** ${instructionDescription}\n\n`;
         hoverContent += `**Details:**\n${descriptionSection}\n\n`;
-        hoverContent += `**Operation:**\n${operationSection}`;
 
         return hoverContent;
     } catch (error) {

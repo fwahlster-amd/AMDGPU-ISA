@@ -67,10 +67,6 @@
     "highlighting"
   ],
   "homepage": "https://github.com/fwahlster-amd/AMDGPU-ISA#readme",
-  "dependencies": {
-    "axios": "^1.7.7",
-    "cheerio": "^1.0.0"
-  },
   "devDependencies": {
     "vscode": "^1.1.34"
   }
