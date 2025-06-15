@@ -36,9 +36,13 @@
     ],
     "grammars": [
       {
+        "scopeName": "source.amdgpu.instr",
+        "path": "./syntaxes/asm.instrLanguage.json"
+      },
+      {
         "language": "amdgpu",
         "scopeName": "source.amdgpu",
-        "path": "./syntaxes/asm.tmLanguage.json"
+        "path": "./syntaxes/asm.amdgpuLanguage.json"
       }
     ]
   },

@@ -1,12 +1,13 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "name": "AMDGPU Assembly",
+  "scopeName": "source.amdgpu",
   "patterns": [
+    { "include": "source.amdgpu.instr" },
     { "include": "#comments" },
     { "include": "#strings" },
     { "include": "#constants" },
     { "include": "#registers" },
-    { "include": "#instructions" },
     { "include": "#directives" },
     { "include": "#labels" },
     { "include": "#sections" },
@@ -150,14 +151,6 @@
         }
       ]
     },
-    "instructions": {
-      "patterns": [
-        {
-          "name": "keyword.control.instruction.amdgpu",
-          "match": "\\b(s_and_b32|s_load_dword)\\b"
-        }
-      ]
-    },
     "registers": {
       "patterns": [
         {
@@ -287,6 +280,5 @@
         }
       ]
     }
-  },
-  "scopeName": "source.amdgpu"
+  }
 }
