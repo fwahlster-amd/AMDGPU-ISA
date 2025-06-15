@@ -165,9 +165,13 @@
           "name": "variable.language.register.amdgpu",
           "match": "\\b(m[0-9]+)\\b"
         },
+                {
+          "name": "variable.language.register.amdgpu",
+          "match": "\\b(acc[0-9]+)\\b"
+        },
         {
           "name": "variable.language.register.amdgpu",
-          "match": "\\b(rax|rbx|rcx|rdx|rsi|rdi|rbp|rsp|r8|r9|r10|r11|r12|r13|r14|r15|eax|ebx|ecx|edx|esi|edi|ebp|esp|ax|bx|cx|dx|si|di|bp|sp|al|bl|cl|dl|cr[0-4]|dr[0-7]|tr[3-6]|cs|ds|ss|es|fs|gs)\\b"
+          "match": "\\b(vcc|exec)\\b"
         }
       ]
     },

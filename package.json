@@ -37,7 +37,7 @@
     "grammars": [
       {
         "scopeName": "source.amdgpu.instr",
-        "path": "./syntaxes/asm.instrLanguage.json"
+        "path": "./syntaxes/amdgpu_isa_mi300.json"
       },
       {
         "language": "amdgpu",
